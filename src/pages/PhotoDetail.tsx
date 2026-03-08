@@ -27,14 +27,14 @@ const PhotoDetail = () => {
 
       <div className="tape scrapbook-hover max-w-2xl w-full">
         <img
-          src={img}
-          alt={`${data.title} work ${index + 1}`}
+          src={img.src}
+          alt={img.caption}
           className="w-full rounded-sm shadow-xl"
         />
       </div>
 
       <p className="font-caveat text-2xl text-ink-black mt-6">
-        {data.title} — {index + 1} / {data.images.length}
+        {img.caption} — {index + 1} / {data.images.length}
       </p>
     </div>
   );
