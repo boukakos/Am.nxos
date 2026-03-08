@@ -7,7 +7,7 @@ import illustrations2 from "@/assets/gallery/illustrations-2.png";
 import tattoos1 from "@/assets/gallery/tattoos-1.png";
 import tattoos2 from "@/assets/gallery/tattoos-2.png";
 
-const galleryData: Record<string, { title: string; images: string[] }> = {
+export const galleryData: Record<string, { title: string; images: string[] }> = {
   ceramics: {
     title: "Ceramic & Clay",
     images: [ceramics1, ceramics2],
@@ -38,7 +38,6 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-paper-white paper-texture px-6 py-12">
       <div className="max-w-4xl mx-auto">
-        {/* Go back tape button */}
         <Link
           to="/work"
           className="inline-block bg-sticky-yellow px-6 py-3 font-caveat text-xl text-ink-black rotate-[-2deg] scrapbook-hover shadow-md mb-10"
@@ -50,12 +49,12 @@ const Gallery = () => {
           {data.title}
         </h1>
 
-        {/* Masonry grid */}
         <div className="columns-1 sm:columns-2 gap-6 space-y-6">
           {data.images.map((img, i) => (
-            <div
+            <Link
               key={i}
-              className="break-inside-avoid tape scrapbook-hover opacity-0 animate-fade-in overflow-hidden rounded-sm"
+              to={`/work/${category}/${i}`}
+              className="block break-inside-avoid tape scrapbook-hover opacity-0 animate-fade-in overflow-hidden rounded-sm"
               style={{ animationDelay: `${0.2 + i * 0.2}s` }}
             >
               <img
@@ -63,7 +62,7 @@ const Gallery = () => {
                 alt={`${data.title} work ${i + 1}`}
                 className="w-full object-cover"
               />
-            </div>
+            </Link>
           ))}
         </div>
       </div>
