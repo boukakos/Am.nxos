@@ -67,10 +67,11 @@ const Gallery = () => {
               style={{ animationDelay: `${0.2 + i * 0.2}s` }}
             >
               <img
-                src={img}
-                alt={`${data.title} work ${i + 1}`}
+                src={img.src}
+                alt={img.caption}
                 className="w-full object-cover"
               />
+              <p className="font-caveat text-lg text-ink-black text-center mt-2 pb-2">{img.caption}</p>
             </Link>
           ))}
         </div>
