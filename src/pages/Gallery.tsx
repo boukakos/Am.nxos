@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import goBackButton from "@/assets/go-back-button.png";
 
 import ceramics1 from "@/assets/gallery/ceramics-1.png";
 import ceramics2 from "@/assets/gallery/ceramics-2.png";
@@ -47,11 +48,12 @@ const Gallery = () => {
   return (
     <div className="min-h-screen bg-paper-white paper-texture px-6 py-12">
       <div className="max-w-4xl mx-auto">
-        <Link
-          to="/work"
-          className="inline-block bg-sticky-yellow px-6 py-3 font-caveat text-xl text-ink-black rotate-[-2deg] scrapbook-hover shadow-md mb-10"
-        >
-          ← Go Back
+        <Link to="/work" className="inline-block mb-10" style={{ width: "12%" }}>
+          <img
+            src={goBackButton}
+            alt="Go Back"
+            className="w-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 cursor-pointer"
+          />
         </Link>
 
         <h1 className="font-marker text-4xl md:text-5xl text-ink-black mb-10">

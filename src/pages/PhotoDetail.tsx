@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { galleryData } from "./Gallery";
+import goBackButton from "@/assets/go-back-button.png";
 
 const PhotoDetail = () => {
   const { category, photoId } = useParams<{ category: string; photoId: string }>();
@@ -18,11 +19,12 @@ const PhotoDetail = () => {
 
   return (
     <div className="min-h-screen bg-pink-pastel paper-texture flex flex-col items-center justify-center px-6 py-12">
-      <Link
-        to={`/work/${category}`}
-        className="inline-block bg-sticky-yellow px-6 py-3 font-caveat text-xl text-ink-black rotate-[-2deg] scrapbook-hover shadow-md mb-10 self-start ml-4 md:ml-16"
-      >
-        ← Go Back
+      <Link to={`/work/${category}`} className="inline-block mb-10 self-start ml-4 md:ml-16" style={{ width: "12%" }}>
+        <img
+          src={goBackButton}
+          alt="Go Back"
+          className="w-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 cursor-pointer"
+        />
       </Link>
 
       <div className="tape scrapbook-hover max-w-2xl w-full">
