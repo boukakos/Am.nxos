@@ -22,8 +22,6 @@ export const galleryData: Record<string, { title: string; images: string[] }> = 
   },
 };
 
-const rotations = ["rotate-2", "-rotate-3", "rotate-1", "-rotate-2", "rotate-3", "-rotate-1"];
-
 const Gallery = () => {
   const { category } = useParams<{ category: string }>();
   const data = galleryData[category || ""];
@@ -38,32 +36,31 @@ const Gallery = () => {
   }
 
   return (
-    <div className="min-h-screen bg-paper-white paper-texture px-4 py-10">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-paper-white paper-texture px-6 py-12">
+      <div className="max-w-4xl mx-auto">
         <Link
           to="/work"
-          className="inline-block bg-sticky-yellow px-5 py-2.5 font-caveat text-lg text-ink-black -rotate-2 scrapbook-hover shadow-md mb-8"
+          className="inline-block bg-sticky-yellow px-6 py-3 font-caveat text-xl text-ink-black rotate-[-2deg] scrapbook-hover shadow-md mb-10"
         >
           ← Go Back
         </Link>
 
-        <h1 className="font-marker text-3xl md:text-4xl text-ink-black mb-8 rotate-1">
+        <h1 className="font-marker text-4xl md:text-5xl text-ink-black mb-10">
           {data.title}
         </h1>
 
-        {/* Scattered gallery layout */}
-        <div className="flex flex-wrap gap-6 justify-center">
+        <div className="columns-1 sm:columns-2 gap-6 space-y-6">
           {data.images.map((img, i) => (
             <Link
               key={i}
               to={`/work/${category}/${i}`}
-              className={`tape scrapbook-hover opacity-0 animate-fade-in ${rotations[i % rotations.length]} max-w-[280px] md:max-w-[320px]`}
-              style={{ animationDelay: `${0.2 + i * 0.15}s` }}
+              className="block break-inside-avoid tape scrapbook-hover opacity-0 animate-fade-in overflow-hidden rounded-sm"
+              style={{ animationDelay: `${0.2 + i * 0.2}s` }}
             >
               <img
                 src={img}
                 alt={`${data.title} work ${i + 1}`}
-                className="w-full h-auto shadow-lg"
+                className="w-full object-cover"
               />
             </Link>
           ))}
