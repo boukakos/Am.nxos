@@ -3,13 +3,12 @@ import homepageImg from "@/assets/homepage-original.jpeg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      {/* Full original homepage image with clickable hotspots */}
-      <div className="relative w-full">
+    <div className="min-h-screen bg-pink-pastel flex justify-center">
+      <div className="relative w-full max-w-md mx-auto">
         <img
           src={homepageImg}
           alt="Am.nxos portfolio homepage"
-          className="w-full"
+          className="w-full h-auto"
         />
         {/* WORK sticky note hotspot */}
         <Link
