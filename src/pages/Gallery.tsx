@@ -7,18 +7,27 @@ import illustrations2 from "@/assets/gallery/illustrations-2.png";
 import tattoos1 from "@/assets/gallery/tattoos-1.png";
 import tattoos2 from "@/assets/gallery/tattoos-2.png";
 
-export const galleryData: Record<string, { title: string; images: string[] }> = {
+export const galleryData: Record<string, { title: string; images: { src: string; caption: string }[] }> = {
   ceramics: {
     title: "Ceramic & Clay",
-    images: [ceramics1, ceramics2],
+    images: [
+      { src: ceramics1, caption: "Handcrafted ceramic vase" },
+      { src: ceramics2, caption: "Clay sculpture piece" },
+    ],
   },
   illustrations: {
     title: "Illustrations",
-    images: [illustrations1, illustrations2],
+    images: [
+      { src: illustrations1, caption: "Portrait illustration" },
+      { src: illustrations2, caption: "Character sketch" },
+    ],
   },
   tattoos: {
     title: "Tattoo",
-    images: [tattoos1, tattoos2],
+    images: [
+      { src: tattoos1, caption: "Floral tattoo design" },
+      { src: tattoos2, caption: "Fine line tattoo art" },
+    ],
   },
 };
 
