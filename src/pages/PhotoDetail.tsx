@@ -7,10 +7,15 @@ const PhotoDetail = () => {
   const data = galleryData[category || ""];
   const index = parseInt(photoId || "0", 10);
   const img = data?.images[index];
+  const detailImages = img?.detailImages?.length
+    ? img.detailImages
+    : img
+      ? [{ src: img.src, caption: img.caption }]
+      : [];
 
   if (!data || !img) {
     return (
-      <div className="min-h-screen bg-paper-white flex items-center justify-center font-marker text-2xl">
+      <div className="min-h-screen bg-pink-pastel flex items-center justify-center font-marker text-2xl">
         Photo not found.{" "}
         <Link to="/work" className="underline ml-2">Go back</Link>
       </div>
@@ -27,16 +32,20 @@ const PhotoDetail = () => {
         />
       </Link>
 
-      <div className="tape scrapbook-hover max-w-2xl w-full">
-        <img
-          src={img.src}
-          alt={img.caption}
-          className="w-full rounded-sm shadow-xl"
-        />
+      <div className="w-full max-w-2xl space-y-6">
+        {detailImages.map((detailImg, detailIndex) => (
+          <div key={detailIndex} className="tape scrapbook-hover w-full">
+            <img
+              src={detailImg.src}
+              alt={detailImg.caption || img.caption}
+              className="w-full rounded-sm shadow-xl"
+            />
+          </div>
+        ))}
       </div>
 
       <p className="font-caveat text-2xl text-ink-black mt-6">
-        {img.caption} — {index + 1} / {data.images.length}
+        {img.caption} ({detailImages.length} photo{detailImages.length > 1 ? "s" : ""}) - {index + 1} / {data.images.length}
       </p>
     </div>
   );

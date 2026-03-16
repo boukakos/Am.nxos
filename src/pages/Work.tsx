@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import goBackButton from "@/assets/go-back-button.png";
 import ceramicButton from "@/assets/gallery/ceramic-and-clay-button.png";
 import illustrationButton from "@/assets/gallery/illystation-button.png";
+import paintingButton from "@/assets/gallery/button-painting.png";
 import tattooButton from "@/assets/gallery/tattoo-button.png";
 
 const categories = [
   { src: ceramicButton, alt: "Ceramic & Clay", path: "/work/ceramics" },
   { src: illustrationButton, alt: "Illustrations", path: "/work/illustrations" },
+  { src: paintingButton, alt: "Paintings", path: "/work/paintings" },
   { src: tattooButton, alt: "Tattoo", path: "/work/tattoos" },
 ];
 
