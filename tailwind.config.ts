@@ -68,6 +68,7 @@ export default {
         marker: ['Permanent Marker', 'cursive'],
         hand: ['Patrick Hand', 'cursive'],
         caveat: ['Caveat', 'cursive'],
+        roboto: ['Roboto', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

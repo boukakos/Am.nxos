@@ -1,15 +1,24 @@
 import { useParams, Link } from "react-router-dom";
 import { galleryData } from "./Gallery";
+import goBackButton from "@/assets/go-back-button.png";
+
+const imageButtonClassName = "w-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 cursor-pointer";
 
 const PhotoDetail = () => {
   const { category, photoId } = useParams<{ category: string; photoId: string }>();
   const data = galleryData[category || ""];
   const index = parseInt(photoId || "0", 10);
   const img = data?.images[index];
+  // Show all detail shots when present; otherwise render the base gallery image.
+  const detailImages = img?.detailImages?.length
+    ? img.detailImages
+    : img
+      ? [{ src: img.src, caption: img.caption }]
+      : [];
 
   if (!data || !img) {
     return (
-      <div className="min-h-screen bg-paper-white flex items-center justify-center font-marker text-2xl">
+      <div className="min-h-screen bg-pink-pastel flex items-center justify-center font-marker text-2xl">
         Photo not found.{" "}
         <Link to="/work" className="underline ml-2">Go back</Link>
       </div>
@@ -18,24 +27,31 @@ const PhotoDetail = () => {
 
   return (
     <div className="min-h-screen bg-pink-pastel paper-texture flex flex-col items-center justify-center px-6 py-12">
-      <Link
-        to={`/work/${category}`}
-        className="inline-block bg-sticky-yellow px-6 py-3 font-caveat text-xl text-ink-black rotate-[-2deg] scrapbook-hover shadow-md mb-10 self-start ml-4 md:ml-16"
-      >
-        ← Go Back
+      <Link to={`/work/${category}`} className="inline-block mb-10 self-start ml-4 md:ml-16" style={{ width: "12%" }}>
+        <img
+          src={goBackButton}
+          alt="Go Back"
+          className={imageButtonClassName}
+        />
       </Link>
 
-      <div className="tape scrapbook-hover max-w-2xl w-full">
-        <img
-          src={img.src}
-          alt={img.caption}
-          className="w-full rounded-sm shadow-xl"
-        />
+      <div className="w-full max-w-2xl space-y-6">
+        {detailImages.map((detailImg, detailIndex) => (
+          <div key={detailIndex} className="tape scrapbook-hover w-full">
+            <img
+              src={detailImg.src}
+              alt={detailImg.caption || img.caption}
+              className="w-full rounded-sm shadow-xl"
+            />
+            {(detailImg.caption || img.caption) && (
+              <p className="font-roboto text-lg text-ink-black text-center mt-3 whitespace-pre-line">
+                {detailImg.caption || img.caption}
+              </p>
+            )}
+          </div>
+        ))}
       </div>
 
-      <p className="font-caveat text-2xl text-ink-black mt-6">
-        {img.caption} — {index + 1} / {data.images.length}
-      </p>
     </div>
   );
 };

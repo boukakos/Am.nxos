@@ -53,6 +53,7 @@ interface State {
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
 
 const addToRemoveQueue = (toastId: string) => {
+  // Prevent scheduling multiple removal timers for the same toast.
   if (toastTimeouts.has(toastId)) {
     return;
   }
@@ -127,6 +128,7 @@ let memoryState: State = { toasts: [] };
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action);
+  // Keep all subscribers in sync with the shared in-memory toast state.
   listeners.forEach((listener) => {
     listener(memoryState);
   });
