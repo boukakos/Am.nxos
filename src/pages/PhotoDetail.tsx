@@ -2,11 +2,14 @@ import { useParams, Link } from "react-router-dom";
 import { galleryData } from "./Gallery";
 import goBackButton from "@/assets/go-back-button.png";
 
+const imageButtonClassName = "w-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 cursor-pointer";
+
 const PhotoDetail = () => {
   const { category, photoId } = useParams<{ category: string; photoId: string }>();
   const data = galleryData[category || ""];
   const index = parseInt(photoId || "0", 10);
   const img = data?.images[index];
+  // Show all detail shots when present; otherwise render the base gallery image.
   const detailImages = img?.detailImages?.length
     ? img.detailImages
     : img
@@ -28,7 +31,7 @@ const PhotoDetail = () => {
         <img
           src={goBackButton}
           alt="Go Back"
-          className="w-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110 cursor-pointer"
+          className={imageButtonClassName}
         />
       </Link>
 
@@ -40,13 +43,15 @@ const PhotoDetail = () => {
               alt={detailImg.caption || img.caption}
               className="w-full rounded-sm shadow-xl"
             />
+            {(detailImg.caption || img.caption) && (
+              <p className="font-roboto text-lg text-ink-black text-center mt-3 whitespace-pre-line">
+                {detailImg.caption || img.caption}
+              </p>
+            )}
           </div>
         ))}
       </div>
 
-      <p className="font-caveat text-2xl text-ink-black mt-6">
-        {img.caption} ({detailImages.length} photo{detailImages.length > 1 ? "s" : ""}) - {index + 1} / {data.images.length}
-      </p>
     </div>
   );
 };
