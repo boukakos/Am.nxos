@@ -71,3 +71,16 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+## Deploy for Free with GitHub Pages
+
+This repo is configured to deploy automatically to GitHub Pages when you push to `main`.
+
+1. Go to your repository on GitHub.
+2. Open `Settings` -> `Pages`.
+3. Under `Build and deployment`, set `Source` to `GitHub Actions`.
+4. Push to `main` (or run the `Deploy To GitHub Pages` workflow manually in `Actions`).
+5. Your site will be available at:
+	- `https://<your-github-username>.github.io/digital-scrapbook-studio/`
+
+After this, every new push to `main` updates the live site.
