@@ -16,6 +16,8 @@ import illustration5 from "@/assets/gallery/illustration-5.jpeg";
 import headPainting from "@/assets/gallery/head-painting.png";
 import painting1 from "@/assets/gallery/painting-1.jpeg";
 //import painting2 from "@/assets/gallery/painting-2.jpeg";
+import painting3 from "@/assets/gallery/painting-3.jpg";
+import painting31 from "@/assets/gallery/painting-3.1.jpg";
 import tattoo1 from "@/assets/gallery/tattoo-1.jpeg";
 import tattoo2 from "@/assets/gallery/tattoo-2.jpeg";
 import tattoo3 from "@/assets/gallery/tattoo-3.jpeg";
@@ -94,6 +96,14 @@ export const galleryData: Record<string, { title: string; titleImage: string; ti
     images: [
       { src: painting1, caption: "Untitled\n Acrylics on Cardboard\n 50×70 cm" },
       //{ src: painting2, caption: "Painting Collection - Piece 2" },
+      {
+        src: painting3,
+        caption: "",
+        detailImages: [
+          { src: painting3, caption: "" },
+          { src: painting31, caption: "Acrylic on Canvas" },
+        ],
+      },
     ],
   },
   tattoos: {
